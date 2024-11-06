@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+// Function to convert a string to lowercase
+string toLowercase(string str) {
+    transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
+}
+
+int main() {
+    // Basic question
+    string answer;
+    string correctAnswer = "paris";
+
+    cout << "Question: What is the capital of France? ";
+    getline(cin, answer);
+
+    // Convert answers to lowercase to ensure case-insensitivity
+    if (toLowercase(answer) == toLowercase(correctAnswer)) {
+        cout << "Correct!" << endl;
+    } else {
+        cout << "Incorrect. The capital of France is Paris." << endl;
+    }
+
+    // Additional Quiz
+    string questions[] = {
+        "What is the capital of Wales?",
+        "What is the capital of England?",
+        "What is the capital of Italy?",
+        "What is the capital of Portugal?",
+        "What is the capital of Netherlands?",
+        "What is the capital of Spain?",
+        "What is the capital of Greece?",
+        "What is the capital of Scotland?",
+        "What is the capital of Ireland?",
+        "What is the capital of Sweden?"
+    };
+    
+    string correctAnswers[] = {
+      "cardiff", "london", "rome", "lisbon", "amsterdam", 
+      "madrid", "athens", "edinburgh", "dublin", "stockholm"
+    };
+
+    // Cycle through questions
+    for (int i = 0; i < 10; i++) {
+        cout << "Question " << i + 1 << ": " << questions[i] << " ";
+        getline(cin, answer);
+
+        if (toLowercase(answer) == correctAnswers[i]) {
+            cout << "Correct!" << endl;
+        } else {
+            cout << "Incorrect. The correct answer is " << correctAnswers[i] << "." << endl;
+        }
+    }
+
+    return 0;
+}
